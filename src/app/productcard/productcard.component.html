@@ -1,0 +1,35 @@
+<div
+(mouseover)="ChangeVisablity(Change)"
+(mouseout)="ReturnStyle(Change)"
+appShadow
+>
+<img
+  [src]="Product().thumbnail"
+  class="card-img-top"
+  [alt]="Product().title || 'Product Image'"
+(click)="RedirectToDetails(Product().id)"
+/>
+<div class="card-body text-center">
+  <h5 class="card-title text-truncate" title="{{ Product().title }}">
+    {{ Product().title }}
+  </h5>
+  <div style="display: none" #Change>
+    <h5 class="card-title text-truncate" title="{{ Product().description | sliceProduct:30}}">
+      {{ Product().description }}
+    </h5>
+    <p class="card-text fw-bold">★★★ {{ Product().rating }}</p>
+  </div>
+  <p class="card-text fw-bold text-success">{{ Product().price | currency:"EGP" }}</p>
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-primary w-100 me-2" (click)="AddToCart(Product())">
+      <i class="fas fa-cart-plus"></i> Add To Cart
+    </button>
+    <button
+      class="btn btn-outline-danger w-100"
+      (click)="AddToFav(Product())"
+    >
+      <i class="fas fa-heart"></i> Favorite
+    </button>
+  </div>
+</div>
+</div>

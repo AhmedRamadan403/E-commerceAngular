@@ -1,0 +1,43 @@
+<div class="m-3 ">
+    <!-- Modern Cart Button -->
+<button class="btn btn-light border rounded-pill shadow-sm position-relative d-flex align-items-center px-3 py-2" 
+id="cartDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+</svg>
+<span class="badge bg-danger position-absolute top-0 start-100 translate-middle cart-item-count">{{FavProducts.length}}</span>
+</button>
+
+<!-- Dropdown Menu -->
+<ul class="dropdown-menu dropdown-menu-end p-3 shadow-lg rounded-3" aria-labelledby="cartDropdown" 
+style="width: 500px; max-height: 400px; overflow-y: auto; border: none;">
+
+<!-- Cart Header -->
+<li class="dropdown-header text-center">
+    <h5 class="fw-bold mb-0">Your Favorite</h5>
+    <small class="text-muted">(<span class="cart-item-count">{{FavProducts.length}}</span> items)</small>
+</li>
+<hr class="my-2">
+
+<!-- Cart Items -->
+<li>
+    <ul class="list-group list-group-flush">
+        @for (product of FavProducts; track $index) {
+            <li class="list-group-item d-flex align-items-center">
+                <img [src]="product.thumbnail" class="rounded shadow-sm me-2" width="50" alt="{{product.title}}">
+                <div class="flex-grow-1">
+                    <p class="mb-1 card-title text-truncate">{{product.title}}</p>
+                    <small class="card-text fw-bold text-success">{{product.category}}</small><br>
+                    <small class="card-text fw-bold text-info">{{product.rating}}</small>
+                </div>
+                <button class="btn btn-sm btn-outline-danger rounded-circle remove-cart-item" title="Remove" (click)="RemoveFromCart(product)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                      </svg>
+                </button>
+            </li>
+        }
+    </ul>
+</li>
+</ul>
+</div>

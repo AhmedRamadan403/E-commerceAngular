@@ -1,0 +1,18 @@
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+    <a
+      class="navbar-brand"
+      [routerLink]="['/home']"
+      [routerLinkActive]="'active'"
+      >Day03</a>
+    <a
+    class="nav-link"
+    [routerLink]="['/login']"
+    [routerLinkActive]="'active'"
+    >Login</a>
+    <div class="d-flex">
+      <app-product-cart />
+      <app-favorite-product />
+    </div>
+  </div>
+</nav>

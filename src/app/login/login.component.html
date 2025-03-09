@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="container mt-5 p-4 text-white rounded shadow maxWidth">
+        <h3 class="text-dark text-center">Sign In</h3>
+        <form class="form-control" #UserForm="ngForm">
+          <div class="mb-3">
+            <label for="inputEmail5" class="form-label">Email</label>
+            <input
+              type="email"
+              id="inputEmail5"
+              class="form-control mb-3"
+              aria-describedby="EmailHelpBlock"
+              name="username"
+              [(ngModel)]="user.username"
+              #UserName="ngModel"
+              required
+            />
+            @if (UserName.invalid && UserName.touched) {
+            <div id="passwordHelpBlock" class="form-text alert alert-danger">
+              Email Is Requrid
+            </div>
+            }
+          </div>
+          <div class="mb-3">
+            <label for="inputPassword5" class="form-label">Password</label>
+            <input
+              type="password"
+              id="inputPassword5"
+              class="form-control "
+              aria-describedby="passwordHelpBlock"
+              name="password"
+              [(ngModel)]="user.password"
+              required
+              #Password="ngModel"
+            />
+            @if (Password.invalid && Password.touched) {
+            <div id="passwordHelpBlock" class="form-text alert alert-danger">
+              PassWord Is Requrid
+            </div>
+            }
+          </div>
+          <br />
+          <input
+            type="button"
+            class="form-control btn btn-primary"
+            value="Login"
+            [disabled]="UserForm.invalid"
+            (click)="login()"
+          />
+          {{user | json}}
+        </form>
+      </div>
+    </div>
+  </div>
+  
